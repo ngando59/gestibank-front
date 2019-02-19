@@ -4,9 +4,6 @@ import {Observable, throwError} from 'rxjs';
 import { Client } from './modele/user/Client';
 import {catchError} from 'rxjs/operators';
 
-
-
-
 const httpHeaders = new HttpHeaders()
   .set('Content-Type', 'application/json')
   .set ('Access-Control-Allow-Headers', 'x-auth, content-type')
