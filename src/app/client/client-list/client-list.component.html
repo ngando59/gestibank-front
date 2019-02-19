@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Liste des clients</h2>
+  <div class="text-right">
+    <button type="button" class="btn btn-primary" (click)="redirectNewClientPage()"><i class="fa fa-user-plus"></i>Nouveau client</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Identifiant</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <th scope="row">{{client.id}}</th>
+      <td>{{client.identifiant}}</td>
+      <td>{{client.nom}}</td>
+      <td>{{client.prenom}}</td>
+      <td>{{client.email}}</td>
+      <td>
+        <button type="button" class="btn btn-success" (click)="editClientPage(client)"><i class="fa fa-edit" title="Editer"></i></button>
+        <button type="button" class="btn btn-danger" (click)="deleteClient(client)"><i class="fa fa-trash" title="Supprimer"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

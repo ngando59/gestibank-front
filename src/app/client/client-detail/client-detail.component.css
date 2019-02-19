@@ -1,0 +1,7 @@
+button {
+  margin-right: 10px;
+}
+input.error {
+  background-color: #fff6f2;
+  border-color: #f9e3d9;
+}
