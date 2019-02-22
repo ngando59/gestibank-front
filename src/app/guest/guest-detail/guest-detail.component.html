@@ -16,17 +16,17 @@
               <input type="text" class="form-control" id="prenom" formControlName="prenom" formGroupName="prenom">
             </div>
             <div class="form-group">
-              <label for="telephone">Telephone :</label>
+              <label for="telephone">Telephone<sup class="text-danger">*</sup> :</label>
               <input type="text" class="form-control" id="telephone" formControlName="telephone" formGroupName="telephone">
             </div>
 
             <div class="form-group">
-              <label for="nbEnfants">Nombre d'enfants :</label>
+              <label for="nbEnfants">Nombre d'enfants<sup class="text-danger">*</sup> :</label>
               <input type="number" class="form-control" id="nbEnfants" formControlName="nbEnfants" value="0" formGroupName="nbEnfants">
             </div>
 
             <div class="form-group">
-              <label for="situationMatrimoniale">Situation matrimoniale :</label>
+              <label for="situationMatrimoniale">Situation matrimoniale<sup class="text-danger">*</sup> :</label>
               <select type="number" class="form-control" id="situationMatrimoniale" formControlName="situationMatrimoniale">
                 <option value="Marié(e)">Marié(e)</option>
                 <option value="Pacsé(e)">Pacsé(e)</option>
@@ -57,10 +57,6 @@
             <input type="text" class="form-control" id="codePostal" formControlName="codePostal">
           </div>
           <div class="form-group">
-            <label for="departement">Departement<sup class="text-danger">*</sup> :</label>
-            <input type="text" class="form-control" id="departement" formControlName="departement">
-          </div>
-          <div class="form-group">
             <label for="pays">Pays<sup class="text-danger">*</sup> :</label>
             <input type="text" class="form-control" id="pays" formControlName="pays">
           </div>
@@ -87,17 +83,8 @@
         <button type="submit" class="btn btn-primary" [disabled]="!guestForm.valid"> Envoyer</button>
       </div>
 
-      <!--<pre>{{userForm.value | json}}</pre>-->
     </form>
         <br>
   </div>
 </div>
 
-<!--<jw-modal id="custom-modal-1">
-  <h1>Demande de création de compte</h1>
-  <p class="text-success text-center">
-    Votre demande de création de compte a été envoyé!<br>
-    Nous reviendrons vers vous bientôt après étude de votre dossier!
-  </p>
-  <button (click)="closeModal('custom-modal-1');">Fermer</button>
-</jw-modal>-->

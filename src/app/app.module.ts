@@ -7,12 +7,13 @@ import { ClientModule } from './client/client.module';
 import { HttpClientModule } from '@angular/common/http';
 import { GuestModule } from './guest/guest.module';
 import {UserModule} from './user.module';
-import {ModalComponent} from './_directives';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import {AlertComponent, AlertModel} from './alert';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +21,16 @@ import {ModalComponent} from './_directives';
     ClientModule,
     GuestModule,
     UserModule,
-    HttpClientModule
+    HttpClientModule,
+    BootstrapModalModule.forRoot({container:document.body})
+  ],
+  exports: [
+
   ],
   providers: [],
+  entryComponents: [
+    AlertComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

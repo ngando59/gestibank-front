@@ -4,6 +4,7 @@ import {Client} from './modele/user/Client';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Guest} from './modele/user/Guest';
+import {ReponseServeur} from './modele/user/ReponseServeur';
 
 const httpHeaders = new HttpHeaders()
   .set('Content-Type', 'application/json')
@@ -24,8 +25,8 @@ export class GuestService {
   constructor(private http: HttpClient) {}
 
   ouvrirUnCompte(guest: Guest): Observable<any> {
-    return this.http.post<Guest>(this.apiUrl + 'ouvrir-compte', guest)
-      .pipe(catchError(err => of('erreur ouverture de compte' + err)));
+    return this.http.post<ReponseServeur>(this.apiUrl + 'ouvrir-compte', guest)
+      .pipe(catchError(err => of('Erreur serveur, veuillez reessayer!')));
   }
 
 }

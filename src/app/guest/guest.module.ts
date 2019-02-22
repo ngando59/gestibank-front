@@ -6,7 +6,6 @@ import { GuestDetailComponent } from './guest-detail/guest-detail.component';
 import {Guest} from '../modele/user/Guest';
 import {Observable} from 'rxjs';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ModalComponent} from '../_directives';
 
 @NgModule({
   declarations: [GuestDetailComponent],

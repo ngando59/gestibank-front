@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor() { }
+  model: any = {}
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
+
+  }
+
+  connexion() {
+    console.log('>>>>>>> Tentative de connexion');
+    // Vérifier que login/mdp sont correctes, par exemple par une requête à un service REST
+    localStorage.setItem('user', JSON.stringify({login: this.model.email}));
+    this.router.navigate(['']);
   }
 
 }

@@ -9,15 +9,14 @@ const httpHeaders = new HttpHeaders()
   .set ('Access-Control-Allow-Headers', 'x-auth, content-type')
   .set('Cache-Control', 'no-cache');
 
-
 const  options = {
   headers: httpHeaders
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class ClientService {
 
   private apiUrl = 'http://localhost:8080/spring-mvc-restfull-crud-example/';

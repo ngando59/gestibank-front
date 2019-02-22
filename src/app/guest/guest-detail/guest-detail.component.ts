@@ -3,7 +3,8 @@ import {GuestService} from '../../guest.service';
 import {Guest} from '../../modele/user/Guest';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ModalComponent} from '../../_directives';
+import { DialogService } from "ng2-bootstrap-modal";
+import {AlertComponent} from '../../alert';
 
 @Component({
   selector: 'app-guest-detail',
@@ -16,29 +17,27 @@ export class GuestDetailComponent implements OnInit {
   guest: Guest;
   guestForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router, private guestService: GuestService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private guestService: GuestService, private dialogService:DialogService) { }
 
   ngOnInit() {
     this.guestForm = new FormGroup({
-      nom: new FormControl('', Validators.required),
-      prenom: new FormControl('', Validators.required),
-      telephone: new FormControl(),
-      nbEnfants: new FormControl(),
-      situationMatrimoniale: new FormControl(),
+      nom: new FormControl('Mbappe', Validators.required),
+      prenom: new FormControl('Kylian', Validators.required),
+      telephone: new FormControl('0102030405', Validators.required),
+      nbEnfants: new FormControl(0, Validators.required),
+      situationMatrimoniale: new FormControl('Célibataire', Validators.required),
 
-      rue: new FormControl('', Validators.required),
-      ville: new FormControl('', Validators.required),
-      codePostal: new FormControl('', Validators.required),
-      departement: new FormControl('', Validators.required),
-      pays: new FormControl('', Validators.required),
+      rue: new FormControl('rue des Champs Elysées', Validators.required),
+      ville: new FormControl('Paris', Validators.required),
+      codePostal: new FormControl('75000', Validators.required),
+      pays: new FormControl('France', Validators.required),
 
-      email: new FormControl('', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]),
-      motDePasse: new FormControl('', Validators.required)
+      email: new FormControl('k.mbappe@gmail.com', [Validators.required, Validators.pattern('[^ @]*@[^ @]*')]),
+      motDePasse: new FormControl('1234', Validators.required)
     });
   }
 
   ngOnDestroy() {
-
   }
 
   onSubmit() {
@@ -55,11 +54,14 @@ export class GuestDetailComponent implements OnInit {
         this.guestForm.controls.rue.value,
         this.guestForm.controls.codePostal.value,
         this.guestForm.controls.ville.value,
-        this.guestForm.controls.departement.value,
         this.guestForm.controls.pays.value);
-      this.guestService.ouvrirUnCompte(guest).subscribe();
-      alert('Votre demande de création de compte a été envoyé!<br>\n' +
-        'Nous reviendrons vers vous bientôt après étude de votre dossier!');
+
+      let response: any = this.guestService.ouvrirUnCompte(guest).subscribe(
+        (res) => {
+          this.dialogService.addDialog(AlertComponent, {title:'Creation de compte', message: res.response});
+        }
+      );
+
       this.guestForm.reset();
       this.router.navigate(['/user/connexion'])
     }
